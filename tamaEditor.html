@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>キ〇タマエディタ</title>
+    <style>
+        header {
+            text-align: center;
+        }
+
+        .ballType,
+        .state,
+        .ballText,
+        .setText {
+            width: 50%;
+            margin: 10px auto;
+
+            text-align: center;
+        }
+
+        #ballTextOutput {
+            width: 100%;
+            min-height: 150px;
+            padding: 5px;
+            border: 1px solid black;
+            text-align: left;
+        }
+    </style>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        const BALL_STR_1 = "したキンタマ";
+        const BALL_STR_2 = "____";
+        const BALL_STR_3 = "ンタマ";
+
+        function setBallText() {
+            // タマの情報を取得
+            let ballState = $(".stateInput").val();
+            let ballType = $(".ballTypeInput").val();
+
+            // タマのテキストを生成
+            // 1行目
+            let ballText = ballState + BALL_STR_1 + "<br>";
+            // 2行目
+            ballText += BALL_STR_2 + ballType + BALL_STR_3;
+
+            // タマのテキストをtextareaにセット
+            $("#ballTextOutput").html(ballText);
+        }
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <h1>キ〇タマエディタ</h1>
+    </header>
+
+    <main>
+        <div class="state">
+            <label>「キ〇タマ」の状態 : </label>
+            <input type="text" class="stateInput" list="state">
+            <datalist id="state">
+                <option value="帰宅"></option>
+                <option value="起床"></option>
+                <option value="出勤"></option>
+                <option value="退勤"></option>
+            </datalist>
+        </div>
+        <div class="ballType">
+            <label>「キ〇タマ」の種類 : </label>
+            <input type="text" class="ballTypeInput" list="ballType">
+            <datalist id="ballType">
+                <option value="帰"></option>
+                <option value="起"></option>
+                <option value="出勤"></option>
+                <option value="退勤"></option>
+            </datalist>
+        </div>
+
+        <div class="setText">
+            <button onclick="setBallText()">キ〇タマ生成</button>
+        </div>
+        <div class="ballText">
+            <h3>↓↓出来上がったキ〇タマ↓↓</h3>
+            <h1 id="ballTextOutput"></h1>
+        </div>
+    </main>
+</body>
+
+</html>
